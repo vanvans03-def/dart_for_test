@@ -11,8 +11,10 @@ void main() {
   ];
 
   print("No.1 Result = ${example1()}");
-  print("No.2.1 Result = ${example2(data)}");
-  print("No.2.2 Result = ${example3(data)}");
+  print("No.2.1 Result = ${example2_1(data)}");
+  print("No.2.2 Result = ${example2_2(data)}");
+  print("No.3 Result = ${example3()}");
+  print("No.4 Result = ${example4()}");
 }
 
 int example1() {
@@ -25,7 +27,7 @@ int example1() {
   return count;
 }
 
-List<String> example2(List<Map<String, dynamic>> data) {
+List<String> example2_1(List<Map<String, dynamic>> data) {
   data.sort((a, b) => a['age'].compareTo(b['age']));
   List<String> names = data
       .where((animal) => animal['age'] <= 20)
@@ -34,10 +36,42 @@ List<String> example2(List<Map<String, dynamic>> data) {
   return names;
 }
 
-List<String> example3(List<Map<String, dynamic>> data) {
+List<String> example2_2(List<Map<String, dynamic>> data) {
   List<String> names = data
       .where((animal) => animal['name'].toString().startsWith('A'))
       .map((animal) => animal['name'].toString())
       .toList();
   return names;
+}
+
+int example3() {
+  List<int> data = [1, 44, 5, 89, 100, 1, 44];
+  int max = data[0];
+  int min = data[0];
+  int index = 0;
+  for (int i = 0; i < data.length; i++) {
+    if (data[i] > max) {
+      max = data[i];
+      index = i;
+    }
+    if (data[i] < min) {
+      min = data[i];
+    }
+  }
+  return index;
+}
+
+List<int> example4() {
+  List<List<int>> data = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ];
+  List<int> resultArray = [];
+  for (int i = 0; i < data.length; i++) {
+    for (int j = 0; j < data[i].length; j++) {
+      resultArray.add(data[i][j]);
+    }
+  }
+  return resultArray;
 }
